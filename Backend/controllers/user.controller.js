@@ -148,6 +148,7 @@ export const updateProfile = async(req,res) =>{
         message: "Missing required fields",
         success: false,
       }); 
+    }
       //cloudinary upload logic here
 
       const connection = await main();
@@ -163,41 +164,66 @@ export const updateProfile = async(req,res) =>{
           success: false,
         });
       }
-      let user = users[0];
-      user.fullname = fullname;
-      user.email = email;
-      user.phoneNumber = phoneNumber;
-      user.bio = bio;
-      user.skill = skills // Convert array to comma-separated string
-      connection.execute(
-        `update users set fullname = ?, email = ?,phoneNumber = ?, bio = ?, skill = ? where user_id = ?`,
-        [user.fullname, user.email, user.phoneNumber, user.bio, user.skill, userId]
-      );
+      // Build dynamic update query
+    const fields = [];
+    const values = [];
 
-       user = {
-      user_id : user.user_id,
-      fullname : user.fullname,
-      email : user.email,
-      phoneNumber : user.phoneNumber,
-      role : user.role,
-      bio : user.bio,
-      skill : user.skill,
-      resume : user.resume,
-      resumeOriginal : user.resumeOriginal,
+    if (fullname) {
+      fields.push("fullname = ?");
+      values.push(fullname);
+    }
+    if (email) {
+      fields.push("email = ?");
+      values.push(email);
+    }
+    if (phoneNumber) {
+      fields.push("phoneNumber = ?");
+      values.push(phoneNumber);
+    }
+    if (bio) {
+      fields.push("bio = ?");
+      values.push(bio);
+    }
+    if (skills) {
+      fields.push("skill = ?");
+      values.push(skills);
     }
 
-      return res.status(200).json({
-        message:"Profile updated successfully",
-        user,
-        success:true,
+    // Example: if you upload file via cloudinary, handle here
+    if (file) {
+      // cloudinary upload logic, then set resume field
+      fields.push("resume = ?");
+      values.push(file.path); // or cloudinary URL
+    }
+
+    if (fields.length === 0) {
+      return res.status(400).json({
+        message: "No fields provided to update",
+        success: false,
       });
-
     }
+
+    // Build final query string dynamically
+    const query = `UPDATE users SET ${fields.join(", ")} WHERE user_id = ?`;
+    values.push(userId);
+
+    await connection.execute(query, values);
+
+    // Fetch updated user
+    const [updatedUser] = await connection.execute(
+      "SELECT * FROM users WHERE user_id = ?",
+      [userId]
+    );
+
+    return res.status(200).json({
+      message: "Profile updated successfully",
+      user: updatedUser[0],
+      success: true,
+    });
     }catch(error){
         console.error("Error in updateProfile:", error);
         res.status(500).json({
         message: "Server error",
         success: false,
     });
-  }
-  };
+  }};
