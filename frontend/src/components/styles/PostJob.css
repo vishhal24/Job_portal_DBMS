@@ -1,0 +1,112 @@
+/* Layout and background */
+.post-job-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Card style */
+.post-job-card {
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  max-width: 550px;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.post-job-card:hover {
+  transform: translateY(-4px);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* Alert message */
+.alert {
+  background: #e8f5e9;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Form elements */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+input,
+textarea,
+select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4b6cb7;
+  box-shadow: 0 0 5px rgba(75, 108, 183, 0.2);
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #5f7ccf, #1b2a55);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

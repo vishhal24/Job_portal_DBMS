@@ -1,0 +1,65 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.job-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.job-company {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.job-location {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0.4rem 0;
+}
+
+.job-salary {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: var(--primary-dark);
+  font-size: 0.8rem;
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
+  margin: 0.2rem;
+}
+
+.apply-btn {
+  width: 100%;
+  margin-top: 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background: var(--primary-dark);
+}

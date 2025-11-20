@@ -1,0 +1,117 @@
+/* src/App.css */
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  min-height: 100vh;
+}
+h1, h2, h3 {
+  color: #282828;
+}
+a {
+  color: #0056d9;
+  text-decoration: none;
+}
+a:hover, .nav-link:hover {
+  text-decoration: underline;
+}
+nav.navbar {
+  background: #232946;
+  color: #fff;
+  padding: 12px 0;
+  box-shadow: 0 1px 8px #0001;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-menu {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-link, .nav-text {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.20s;
+}
+.nav-link.btn-logout {
+  background: #ee5c5c;
+  padding: 5px 14px;
+  border-radius: 3px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.nav-link.btn-logout:hover { background: #c92c2c; }
+.nav-link:hover { color: #ffac41; }
+
+.container, .dashboard-container, .profile-container, .applications-container {
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 30px auto 25px auto;
+  max-width: 650px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+input, select, textarea {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #dde1e4;
+  background: #f8fafc;
+}
+button, .btn-submit {
+  background: #232946;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+button:hover, .btn-submit:hover { background: #0056d9; }
+
+ul {
+  padding-left: 20px;
+}
+li {
+  margin: 8px 0;
+  font-size: 1.04rem;
+}
+.success-message {
+  color: #155724;
+  background: #d4edda;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #aad5bb;
+}
+.error-message {
+  color: #721c24;
+  background: #f8d7da;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #f5b4bb;
+}
+@media (max-width: 700px) {
+  .container, .dashboard-container, .profile-container, .applications-container {
+    padding: 15px;
+    max-width: 98vw;
+  }
+  .nav-container { flex-direction: column; gap: 16px;}
+  .nav-menu { gap: 10px;}
+}
